@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "HypnosisViewController.h"
+#import "ReminderViewController.h"
 
 
 @interface AppDelegate ()
@@ -25,7 +26,15 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
     
     HypnosisViewController *hvc = [[HypnosisViewController alloc] init];
     
-    self.window.rootViewController = hvc;
+    // This will get a pointer to an object that represents the app bundle
+    NSBundle *appBundle = [NSBundle mainBundle];
+    
+    // Look in the appBundle for the file BNRReminderViewController.xib
+    ReminderViewController *rvc =
+    [[ReminderViewController alloc] initWithNibName:@"ReminderViewController"
+                                                bundle:appBundle];
+    
+    self.window.rootViewController = rvc;
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
