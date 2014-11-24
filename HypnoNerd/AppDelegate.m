@@ -26,15 +26,12 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
     
     HypnosisViewController *hvc = [[HypnosisViewController alloc] init];
     
-    // This will get a pointer to an object that represents the app bundle
-    NSBundle *appBundle = [NSBundle mainBundle];
+    ReminderViewController *rvc = [[ReminderViewController alloc] init];
     
-    // Look in the appBundle for the file BNRReminderViewController.xib
-    ReminderViewController *rvc =
-    [[ReminderViewController alloc] initWithNibName:@"ReminderViewController"
-                                                bundle:appBundle];
+    UITabBarController *tabBarController = [[UITabBarController alloc] init];
+    tabBarController.viewControllers = @[hvc, rvc];
     
-    self.window.rootViewController = rvc;
+    self.window.rootViewController = tabBarController;
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
