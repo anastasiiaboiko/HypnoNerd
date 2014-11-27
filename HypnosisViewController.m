@@ -9,6 +9,9 @@
 #import "HypnosisViewController.h"
 #import "HypnosisView.h"
 
+@interface HypnosisViewController() <UITextFieldDelegate>
+@end
+
 @implementation HypnosisViewController
 
 - (void)loadView
@@ -21,6 +24,12 @@
     
     CGRect textFieldRect = CGRectMake(40, 70, 240, 30);
     UITextField *textField = [[UITextField alloc] initWithFrame:textFieldRect];
+    
+    textField.placeholder = @"Hypnotize me";
+    textField.returnKeyType = UIReturnKeyDone;
+    
+    // There will be a warning on this line, the book will tell why shortly
+    textField.delegate = self;
     
     // Setting the border style on the text field will allow us to see it more easily
     textField.borderStyle = UITextBorderStyleRoundedRect;
@@ -54,6 +63,12 @@
     [super viewDidLoad];
     
     NSLog(@"BNRHypnosisViewController loaded its view.");
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    NSLog(@"%@", textField.text);
+    return YES;
 }
 
 @end
